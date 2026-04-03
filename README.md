@@ -45,6 +45,18 @@ The GUI runtime uses:
 
 If Python is missing and `winget` is available, the runtime setup script will attempt to install Python 3.12 in user scope first.
 
+If you want a single setup entry that prepares the GUI runtime, clones the upstream Project-Rat repositories, creates the workbench folder, and then opens the GUI, use:
+
+```powershell
+.\Setup-Rat-Workbench.bat
+```
+
+Or run:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\setup_project_rat_workbench.ps1 -Launch
+```
+
 ## Workspace Bootstrap
 
 If you want the full Project-Rat workspace on a new machine, run:
@@ -242,5 +254,24 @@ That keeps the GitHub repository small and makes the bootstrap path reproducible
 
 - 只想启动界面：运行 `Run-Project-RAT.bat`
 - 想下载完整依赖工作区：运行 `Bootstrap-Workspace.bat`
+- 想一次性完成 GUI 运行时准备、克隆上游仓库并直接进入界面：运行 `Setup-Rat-Workbench.bat`
 - 想做本地编译：安装 Visual Studio Build Tools 后执行 `bootstrap-vcpkg`
 - 如果网络环境访问 GitHub 或上游仓库较慢，再按需配置代理
+
+### 6. 一键就绪命令
+
+如果你希望用户执行一条命令后，就能直接打开 GUI 开始做磁体设计，可以使用：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\setup_project_rat_workbench.ps1 -Launch
+```
+
+这个命令会依次完成：
+
+- 配置 GUI 运行环境
+- 克隆上游 `Project-Rat` 相关仓库
+- 同步本仓库内的 `rat-vcpkg` overlay
+- 创建 `cct-workbench` 设计工作区
+- 启动 Rat-Workbench GUI
+
+运行完成后，用户就可以直接进入 GUI 的“磁体设计”页面开始生成磁体工程。

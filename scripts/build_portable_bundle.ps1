@@ -160,9 +160,13 @@ $commonPaths = @(
     (Join-Path $WorkspaceRoot "scripts"),
     (Join-Path $WorkspaceRoot "workspace-overlays"),
     (Join-Path $WorkspaceRoot "README.md"),
+    (Join-Path $WorkspaceRoot "Bootstrap-Workspace.bat"),
     (Join-Path $WorkspaceRoot "project_rat_gui.py"),
     (Join-Path $WorkspaceRoot "project_rat_gui_qt.py"),
-    (Join-Path $WorkspaceRoot "project_rat_cct.py")
+    (Join-Path $WorkspaceRoot "project_rat_cct.py"),
+    (Join-Path $WorkspaceRoot "requirements-gui.txt"),
+    (Join-Path $WorkspaceRoot "Run-Project-RAT.bat"),
+    (Join-Path $WorkspaceRoot "Setup-Rat-Workbench.bat")
 )
 foreach ($path in $commonPaths) {
     Copy-IntoStage -SourcePath $path -StageRoot $stageRoot
