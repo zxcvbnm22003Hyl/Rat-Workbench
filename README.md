@@ -57,6 +57,12 @@ Or run:
 powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\setup_project_rat_workbench.ps1 -Launch
 ```
 
+If you want a more complete one-click provisioning flow that also installs or confirms C++ build tools, bootstraps `vcpkg`, installs Project-Rat libraries, and only then opens the GUI, use:
+
+```powershell
+.\Setup-Rat-Workbench-Full.bat
+```
+
 ## Workspace Bootstrap
 
 If you want the full Project-Rat workspace on a new machine, run:
@@ -255,6 +261,7 @@ That keeps the GitHub repository small and makes the bootstrap path reproducible
 - 只想启动界面：运行 `Run-Project-RAT.bat`
 - 想下载完整依赖工作区：运行 `Bootstrap-Workspace.bat`
 - 想一次性完成 GUI 运行时准备、克隆上游仓库并直接进入界面：运行 `Setup-Rat-Workbench.bat`
+- 想尽量把用户机器一次性配到接近完整本地环境：运行 `Setup-Rat-Workbench-Full.bat`
 - 想做本地编译：安装 Visual Studio Build Tools 后执行 `bootstrap-vcpkg`
 - 如果网络环境访问 GitHub 或上游仓库较慢，再按需配置代理
 
@@ -275,3 +282,38 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\setup_project_rat_
 - 启动 Rat-Workbench GUI
 
 运行完成后，用户就可以直接进入 GUI 的“磁体设计”页面开始生成磁体工程。
+
+### 7. 一键完整环境命令
+
+如果你希望用户不仅能打开 GUI 设计磁体，而且尽量把编译链、`vcpkg` 和 `Project-Rat` 库也一次性准备好，可以使用：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\setup_project_rat_full_environment.ps1 -Launch
+```
+
+对应的 bat 入口是：
+
+```powershell
+.\Setup-Rat-Workbench-Full.bat
+```
+
+这个入口会依次完成：
+
+- 先执行设计就绪流程
+- 安装或确认 Visual Studio Build Tools C++ 工具链
+- 引导 `vcpkg`
+- 安装 `Project-Rat` 库
+- 最后启动 GUI
+
+默认为了更高成功率，脚本会使用 `install-rat-models-no-nl` 这条安装路径。  
+如果你想显式切换到包含 NL 的安装路径，可以手动执行：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\setup_project_rat_full_environment.ps1 -RatInstallAction install-rat-models -Launch
+```
+
+注意：
+
+- 这条路径耗时会明显更长
+- 安装 Visual Studio Build Tools 可能需要管理员权限和 UAC 确认
+- `vcpkg` 与 `rat-models` 安装需要联网

@@ -166,7 +166,8 @@ $commonPaths = @(
     (Join-Path $WorkspaceRoot "project_rat_cct.py"),
     (Join-Path $WorkspaceRoot "requirements-gui.txt"),
     (Join-Path $WorkspaceRoot "Run-Project-RAT.bat"),
-    (Join-Path $WorkspaceRoot "Setup-Rat-Workbench.bat")
+    (Join-Path $WorkspaceRoot "Setup-Rat-Workbench.bat"),
+    (Join-Path $WorkspaceRoot "Setup-Rat-Workbench-Full.bat")
 )
 foreach ($path in $commonPaths) {
     Copy-IntoStage -SourcePath $path -StageRoot $stageRoot
