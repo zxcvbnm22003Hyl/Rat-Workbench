@@ -1,4 +1,6 @@
 # Rat-Workbench
+<img width="1918" height="1016" alt="屏幕截图 2026-04-03 131545" src="https://github.com/user-attachments/assets/ffef6f6d-13fc-41c4-b0f4-72e33ace46ab" />
+<img width="1919" height="1014" alt="屏幕截图 2026-04-03 092740" src="https://github.com/user-attachments/assets/640ee836-1f73-448a-8114-2f155d37b72d" />
 
 `Rat-Workbench` is a Windows-first helper repository for working with the open-source Project-Rat ecosystem.
 
